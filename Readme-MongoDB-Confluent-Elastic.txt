@@ -72,8 +72,8 @@ CREATE STREAM MONGO_ELASTIC_T
 CREATE SINK CONNECTOR `elastic-sink-connector` WITH(
     "connector.class"='io.confluent.connect.elasticsearch.ElasticsearchSinkConnector',
     "connection.url"='https://iqdhdouvck:u9kokdgb8o@confluent-poc-3327101121.eu-west-1.bonsaisearch.net:443',
-    "connection.username"='olaplace@confluent.io',
-    "connection.password"='Sylvie1984!',
+    "connection.username"='your_username',
+    "connection.password"='your_password',
     "tasks.max"='1',
     "topics"='MONGO_ELASTIC_T',
     "type.name"='_doc',
@@ -85,7 +85,7 @@ CREATE SINK CONNECTOR `elastic-sink-connector` WITH(
 
 // In Mongo shell, continue to insert document(s) in "inventory" Collection (demo DB)
 // The documents will automatically go from MongoDB to Confluent to Elastic
-db.inventory.insert ({ "SKU" : 2000, "item_name":"Tickle Me Elmo 2000", "quantity" : 2000 })
+db.inventory.insert ({ "SKU" : 3000, "item_name":"Tickle Me Elmo 3000", "quantity" : 3000 })
 
 // Search in Elastic for the new indexed document
 
