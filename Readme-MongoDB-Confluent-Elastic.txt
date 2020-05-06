@@ -10,14 +10,19 @@
 // Start Confluent (if not yet started)
 confluent local start
 
-// Start mongo shell (in a shell window)
+// Start MongoDB (if not yet started)
+mongod --replSet monreplica --dbpath /Users/olaplace/MongoDB/db
+
+// Elastic is available from a bonsai.io instance
+
+// Start mongo shell (in a new window)
 mongo 
 
 // Create "demo" DB
 > use demo
 > show tables
 
-// Install Mongo connector (available connectors at www.confluent.io/hub)
+// Install MongoDB connector (available connectors at www.confluent.io/hub)
 confluent-hub install mongodb/kafka-connect-mongodb:1.0.1
 
 // In Confluent Control Center (C3): http://localhost:9021
@@ -67,8 +72,8 @@ confluent-hub install confluentinc/kafka-connect-elasticsearch:5.5.0
 CREATE SINK CONNECTOR `elastic-sink-connector` WITH(
     "connector.class"='io.confluent.connect.elasticsearch.ElasticsearchSinkConnector',
     "connection.url"='https://iqdhdouvck:u9kokdgb8o@confluent-poc-3327101121.eu-west-1.bonsaisearch.net:443',
-    "connection.username"='your_username',
-    "connection.password"='your_password',
+    "connection.username"='olaplace@confluent.io',
+    "connection.password"='Sylvie1984!',
     "tasks.max"='1',
     "topics"='MONGO_ELASTIC_T',
     "type.name"='_doc',
