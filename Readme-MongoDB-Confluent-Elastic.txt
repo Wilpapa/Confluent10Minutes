@@ -7,6 +7,12 @@
 // 2) MongoDB (on-prem or in Cloud): needs a replicaSet
 // 3) Elastic (on-prem or in Cloud)
 
+// Install MongoDB connector (available connectors at www.confluent.io/hub)
+confluent-hub install mongodb/kafka-connect-mongodb:1.0.1
+
+// Install Elastic connector (available connectors at www.confluent.io/hub)
+confluent-hub install confluentinc/kafka-connect-elasticsearch:5.5.0
+
 // Start Confluent (if not yet started)
 confluent local start
 
@@ -21,9 +27,6 @@ mongo
 // Create "demo" DB
 > use demo
 > show tables
-
-// Install MongoDB connector (available connectors at www.confluent.io/hub)
-confluent-hub install mongodb/kafka-connect-mongodb:1.0.1
 
 // In Confluent Control Center (C3): http://localhost:9021
 // Create the MongoDB Connector in ksqlDB
@@ -63,9 +66,6 @@ CREATE STREAM MONGO_ELASTIC_T
              fullDocument->quantity AS quantity
    FROM MONGO_ELASTIC; 
 
-// Install Elastic connector (available connectors at www.confluent.io/hub)
-confluent-hub install confluentinc/kafka-connect-elasticsearch:5.5.0
-
 // In Confluent Control Center (C3): http://localhost:9021
 // Create the Elastic Connector in ksqlDB
 // See also: https://www.confluent.io/blog/kafka-elasticsearch-connector-tutorial/
@@ -88,3 +88,5 @@ CREATE SINK CONNECTOR `elastic-sink-connector` WITH(
 db.inventory.insert ({ "SKU" : 2000, "item_name":"Tickle Me Elmo 2000", "quantity" : 2000 })
 
 // Search in Elastic for the new indexed document
+
+
